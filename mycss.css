@@ -11,6 +11,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
 }
@@ -33,21 +37,69 @@ body {
   user-select: none;
 }
 
+.侧边列表 {
+  position: fixed;
+  border-radius: 0 10px 10px 0;
+  z-index: 10;
+  top: 50%;
+  left: 0;
+  translate: 0 -50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 0;
+  background-color: #89a6;
+}
+
+.侧边列表项 {
+  width: 100%;
+  /* height: 20px; */
+  list-style: none;
+  display: flex;
+}
+
+.侧边列表项:hover {
+  background-color: #234;
+}
+
+.工具锚链接 {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.工具锚链接:hover {
+  cursor: pointer;
+}
+
 .flip-a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
-  gap: 2.5%;
+  gap: 30px;
   margin: 0 auto;
   width: 650px;
 }
 
-.flip-b{
+.flip-b {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 50px;
+  margin: 0 auto;
+  width: 650px;
+}
+
+.flip-a > *,
+.flip-b > * {
+  flex-shrink: 0;
 }
 
 .loading {
@@ -423,6 +475,8 @@ button {
 }
 
 .分割线 {
+  position: absolute;
+  top: 1000px;
   width: 100%;
   height: 1px;
   background-color: #fffa;
@@ -430,27 +484,30 @@ button {
 
 .素质报告第一步,
 .素质报告第二步,
-.素质报告第三步 {
-  padding: 20px 50px;
+.素质报告第三步,
+.学籍表第一步,
+.学籍表第二步,
+.学籍表第三步 {
+  padding: 15px 50px;
   border: solid 1px #fff3;
 }
 
-.素质报告第一步 {
+.素质报告第一步 .学籍表第一步 {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .步骤标题 {
-  color: lightgreen;
+  color: gold;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 26px;
 }
 
 .步骤有序列表 {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
 }
 
 .列表项内部容器 {
@@ -468,6 +525,7 @@ button {
   width: fit-content;
   /* margin-bottom: 20px; */
   background-color: #89a5;
+  font-size: 18px;
 }
 
 #放假开学时间 {
@@ -510,10 +568,17 @@ input[type="radio"]:checked {
   clip-path: polygon(16% 53%, 40% 68%, 77% 19%, 85% 26%, 42% 84%, 10% 62%);
 }
 
-.素质报告第三步 {
+.素质报告第三步,
+.学籍表第三步 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.学籍表第一步,
+.学籍表第二步,
+.学籍表第三步 {
+  width: 100%;
 }
 
 /* https://juejin.cn/post/7086759520025706526 */

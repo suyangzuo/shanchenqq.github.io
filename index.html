@@ -46,7 +46,6 @@
 
         .panel {
             animation: s 2s;
-
         }
 
         @keyframes s {
@@ -110,7 +109,7 @@
         .flip-wrapper {
             position: relative;
             width: 100%;
-            height: 2400px;
+            height: 2000px;
 
             /* P309跨浏览器兼容 */
             /* transition: transform .25s ease-in-out; */
@@ -166,6 +165,11 @@
         </div>
     </div>
 
+    <ul class="侧边列表">
+        <li class="侧边列表项"><a href="#app1" class="工具锚链接">综合素质报告</a></li>
+        <li class="侧边列表项"><a href="#app2" class="工具锚链接">学籍表</a></li>
+    </ul>
+    <div class="分割线"></div>
     <div class="flip-wrapper menu-wrapper" id='my_div'>
         <!-- a面 -->
         <div id="app1" class="flip-a menu">
@@ -174,7 +178,7 @@
             </div>
 
             <div class="素质报告第一步">
-                <p class="步骤标题">设置必要信息</p>
+                <p class="步骤标题" style="margin-bottom: 20px;">设置必要信息</p>
                 <ol class="步骤有序列表">
                     <li>
                         <h3 class="列表项标题" style="margin-bottom: 10px;">放假及开学时间</h3>
@@ -255,47 +259,45 @@
                 <button @click="fetchMessages" class="my_label">① 获取整合数据</button>
                 <button @click="initiate" class="my_label">② 开始制作</button>
             </div>
-
-            <p style="color:gold; text-align: center;">Copyright © 2003-2022 shanchen All Rights Reserved. 版本号: 5.20</p>
         </div>
         <!-- b面 -->
         <div id="app2" class="flip-b menu-settings">
             <div class="gradient-border" id="box">
-                <p>南通中专学生学籍表自动生成工具2.0版</p>
+                <p>南通中专学生学籍表自动生成工具 v2.0</p>
             </div>
 
-            <div>
-                <p style="color:red;font-weight:bold;">第一步: 设置必要信息</p>
-                <p>采用高职班学籍表模板或中职班学籍表模板: </p>
-                <p>--高职班学籍表模板--打
-                    <span :style="{color:pick==='high'?'red':'green',fontWeight:'bold'}">√</span>
-                    <input type="radio" v-model="pick" value="high" />
-                </p>
-                <p>--中职班学籍表模板--打
-                    <span :style="{color:pick==='low'?'red':'yellowgreen',fontWeight:'bold'}">√</span>
-                    <input type="radio" v-model="pick" value="low" />
-                </p>
+            <div class="学籍表第一步">
+                <p class="步骤标题">设置必要信息</p>
+                <div class="列表项内部容器" style="margin-bottom: 20px;">
+                    <p class="列表项标题">选择学制</p>
+                    <label class="单选标签">
+                        <span class="单选标题">高职</span>
+                        <input type="radio" v-model="pick" value="high" name="学籍表" />
+                    </label>
+                    <label class="单选标签">
+                        <span class="单选标题">中职</span>
+                        <input type="radio" v-model="pick" value="high" name="学籍表" checked />
+                    </label>
+                </div>
             </div>
 
-            <div>
-                <p style="color:red;font-weight:bold;">第二步: 直接拖入相关Excel表格</p>
-                <label class="my_label" @change='handleFile'>
+            <div class="学籍表第二步">
+                <p class="步骤标题">处理 <span style="font-family: Consolas;">Excel</span> 表格</p>
+                <label class="my_label" @change='handleFile' style="margin:20px 0; width: 525px;">
                     <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#attr-accept -->
                     <!-- https://juejin.cn/post/7063110398945280013 -->
                     <!-- https://juejin.cn/post/7224402365452238906 -->
                     <!-- 还不知道怎么用Javascript判断文件类型吗？https://juejin.cn/post/7252344306191253541 -->
                     <input type="file" hidden multiple accept=".xlsx,.xls" webkitdirectory />
-                    点击选取学期成绩总表、学籍信息收集表、5个或3个学年的评语表所在的文件夹
+                    <span class="文件处理框文本">点击选取：学期成绩总表、学籍信息收集表、5 或 3 学年的评语表所在的文件夹</span>
                 </label>
                 <p id="droptarget" @drop='handleFile'>
-                    拖入学期成绩总表、<br>
-                    学籍信息收集表、<br>
-                    5个或3个学年的评语表<br>
+                    <span>拖入：学期成绩总表、学籍信息收集表、5 或 3 学年的评语表</span>
                 </p>
             </div>
 
-            <div>
-                <p style="color:red;font-weight:bold;">第三步: 先点击获取整合数据,再点击开始制作</p>
+            <div class="学籍表第三步">
+                <p class="步骤标题">获取数据<span class="强调">请按顺序操作</span></p>
 
                 <!-- https://cn.vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show -->
                 <div v-if='JSON.stringify(courseNameObj) !== "{}"'>
@@ -332,8 +334,8 @@
                     </div>
                 </div>
                 <p style="color:#0f0">{{info}}</p>
-                <button @click="fetchMessages" class="my_label">获取整合数据</button>&nbsp
-                <button @click="initiate" class="my_label">开始制作</button>
+                <button @click="fetchMessages" class="my_label">① 获取整合数据</button>
+                <button @click="initiate" class="my_label">② 开始制作</button>
                 <!-- <button @click="generate(messages[0])" class="my_label">开始制作</button> -->
             </div>
 
@@ -422,7 +424,6 @@
             <a href="https://share.weiyun.com/Vwx0S56J">中职毕业班学籍信息收集表.xlsx</a>
         </div>
     </div>
-
 </body>
 
 <script type='module'>
