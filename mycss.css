@@ -37,6 +37,20 @@ body {
   user-select: none;
 }
 
+body::-webkit-scrollbar {
+  width: 15px;
+  background-color: #456;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #789;
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #abc;
+}
+
 .侧边列表 {
   position: fixed;
   border-radius: 0 10px 10px 0;
@@ -80,20 +94,19 @@ body {
 .flip-a {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   /* align-items: center; */
   gap: 30px;
-  margin: 0 auto;
   width: 650px;
+  /* border: solid 1px white; */
 }
 
 .flip-b {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  /* align-items: center; */
   gap: 50px;
-  margin: 0 auto;
   width: 650px;
 }
 
@@ -474,14 +487,6 @@ button {
   }
 }
 
-.分割线 {
-  position: absolute;
-  top: 1000px;
-  width: 100%;
-  height: 1px;
-  background-color: #fffa;
-}
-
 .素质报告第一步,
 .素质报告第二步,
 .素质报告第三步,
@@ -579,6 +584,11 @@ input[type="radio"]:checked {
 .学籍表第二步,
 .学籍表第三步 {
   width: 100%;
+}
+
+.tutorials {
+  width: 100%;
+  height: 1500px;
 }
 
 /* https://juejin.cn/post/7086759520025706526 */

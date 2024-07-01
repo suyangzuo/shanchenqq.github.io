@@ -109,7 +109,13 @@
         .flip-wrapper {
             position: relative;
             width: 100%;
-            height: 2000px;
+            height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10vw;
+            padding: 75px 0;
 
             /* P309跨浏览器兼容 */
             /* transition: transform .25s ease-in-out; */
@@ -169,7 +175,6 @@
         <li class="侧边列表项"><a href="#app1" class="工具锚链接">综合素质报告</a></li>
         <li class="侧边列表项"><a href="#app2" class="工具锚链接">学籍表</a></li>
     </ul>
-    <div class="分割线"></div>
     <div class="flip-wrapper menu-wrapper" id='my_div'>
         <!-- a面 -->
         <div id="app1" class="flip-a menu">
@@ -267,7 +272,7 @@
             </div>
 
             <div class="学籍表第一步">
-                <p class="步骤标题">设置必要信息</p>
+                <p class="步骤标题" style="margin-bottom: 20px;">设置必要信息</p>
                 <div class="列表项内部容器" style="margin-bottom: 20px;">
                     <p class="列表项标题">选择学制</p>
                     <label class="单选标签">
@@ -338,10 +343,11 @@
                 <button @click="initiate" class="my_label">② 开始制作</button>
                 <!-- <button @click="generate(messages[0])" class="my_label">开始制作</button> -->
             </div>
-
-            <p style="color:gold">Copyright © 2003-2022 shanchen All Rights Reserved. 版本号: 2.0</p>
         </div>
+        <p class="版权声明" style="color:gold">Copyright © 2003-2022 shanchen All Rights Reserved. 版本号: 2.0</p>
     </div>
+
+    <div class="tutorials"></div>
 
     <div class="card" style="display: none;">
         <div class="word">
